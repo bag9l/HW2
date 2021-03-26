@@ -24,7 +24,6 @@ public class Circle {
     }
 
     public float getArea() {
-        float area = (float) (Math.PI * Math.pow(radius, 2));
-        return area;
+        return (float) (Math.PI * Math.pow(radius, 2));
     }
 }
