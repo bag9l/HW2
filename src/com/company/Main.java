@@ -30,18 +30,18 @@ public class Main {
         System.out.println("\tFractions");
         System.out.print("Sum: ");
         Fractions resultFraction = firstFractions.addition(secondFractions);
-        resultFraction.showFraction();
+        System.out.println(resultFraction.toString());
         System.out.print("Difference: ");
         resultFraction = firstFractions.subtraction(secondFractions);
-        resultFraction.showFraction();
+        System.out.println(resultFraction.toString());
         System.out.print("Share: ");
         resultFraction = firstFractions.division(secondFractions);
-        resultFraction.showFraction();
+        System.out.println(resultFraction.toString());
         System.out.print("Product: ");
         resultFraction = firstFractions.multiplication(secondFractions);
-        resultFraction.showFraction();
+        System.out.println(resultFraction.toString());
         System.out.print("Equal: ");
-        firstFractions.equal(secondFractions);
+        firstFractions.equals(secondFractions);
 
         // 5. Money
         Money firstMoney = new Money(12, (byte) 25);
@@ -51,20 +51,20 @@ public class Main {
         System.out.println("\tMoney");
         System.out.print("Sum: ");
         Money resultMoney = firstMoney.additionOfSums(secondMoney);
-        resultMoney.showMoney();
+        System.out.println(resultMoney.toString());
         System.out.print("Difference: ");
         resultMoney = firstMoney.subtractionOfSums(secondMoney);
-        resultMoney.showMoney();
+        System.out.println(resultMoney.toString());
         System.out.print("Share: ");
         resultMoney = firstMoney.divisionOfSums(secondMoney);
-        resultMoney.showMoney();
+        System.out.println(resultMoney.toString());
         System.out.print("The share of division into fractional expressions: ");
         resultMoney = firstMoney.divisionByNum(2.1f);
-        resultMoney.showMoney();
+        System.out.println(resultMoney.toString());
         System.out.print("The product of multiplication by a number: ");
         resultMoney = firstMoney.multiplicationByNum(3.7f);
-        resultMoney.showMoney();
+        System.out.println(resultMoney.toString());
         System.out.print("Equal: ");
-        firstMoney.equal(secondMoney);
+        firstMoney.equals(secondMoney);
     }
 }
