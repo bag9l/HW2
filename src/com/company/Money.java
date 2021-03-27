@@ -25,8 +25,7 @@ public class Money {
             ++hryvnias;
             kopecks -= 100;
         }
-        Money money = new Money(hryvnias, kopecks);
-        return money;
+        return new Money(hryvnias, kopecks);
     }
 
     public Money subtractionOfSums(Money moneyForSubstraction) {
@@ -42,8 +41,7 @@ public class Money {
             ++hryvnias;
             kopecks -= 100;
         }
-        Money money = new Money(hryvnias, kopecks);
-        return money;
+        return new Money(hryvnias, kopecks);
     }
 
     public Money divisionOfSums(Money moneyForDivision) {
@@ -56,8 +54,7 @@ public class Money {
             hryvnias = kopecks / 100;
             kopecks -= hryvnias * 100;
         }
-        Money money = new Money(hryvnias, (byte) kopecks);
-        return money;
+        return new Money(hryvnias, (byte) kopecks);
     }
 
     public Money divisionByNum(float number) {
@@ -69,8 +66,7 @@ public class Money {
             ++hryvnias;
             kopecks -= 100;
         }
-        Money money = new Money(hryvnias, (byte) kopecks);
-        return money;
+        return new Money(hryvnias, (byte) kopecks);
     }
 
     public Money multiplicationByNum(float number) {
@@ -82,29 +78,34 @@ public class Money {
             hryvnias += kopecks / 100;
             kopecks -= hryvnias * 100;
         }
-        Money money = new Money(hryvnias, (byte) kopecks);
-        return money;
+        return new Money(hryvnias, (byte) kopecks);
     }
 
-    public boolean equal(Money moneyForEqual) {
-        double firstSum = this.hryvnias + this.kopecks / 100;
-        double secondSum = moneyForEqual.hryvnias + moneyForEqual.kopecks / 100;
-        if (firstSum == secondSum) {
-            System.out.println(this.hryvnias + "," + this.kopecks + " = "
-                    + moneyForEqual.hryvnias + "," + moneyForEqual.kopecks);
-            return true;
-        } else if (firstSum > secondSum) {
-            System.out.println(this.hryvnias + "," + this.kopecks + " > "
-                    + moneyForEqual.hryvnias + "," + moneyForEqual.kopecks);
-            return false;
-        } else {
-            System.out.println(this.hryvnias + "," + this.kopecks + " < "
-                    + moneyForEqual.hryvnias + "," + moneyForEqual.kopecks);
-            return false;
+    @Override
+    public boolean equals(Object money) {
+        if (money instanceof Money) {
+            Money moneyForEqual = (Money) money;
+            double firstSum = (this.hryvnias * 100 + this.kopecks) / 100d;
+            double secondSum = (moneyForEqual.hryvnias * 100 + moneyForEqual.kopecks) / 100d;
+            if (firstSum == secondSum) {
+                System.out.println(this.hryvnias + "," + this.kopecks + " = "
+                        + moneyForEqual.hryvnias + "," + moneyForEqual.kopecks);
+                return true;
+            } else if (firstSum > secondSum) {
+                System.out.println(this.hryvnias + "," + this.kopecks + " > "
+                        + moneyForEqual.hryvnias + "," + moneyForEqual.kopecks);
+                return false;
+            } else {
+                System.out.println(this.hryvnias + "," + this.kopecks + " < "
+                        + moneyForEqual.hryvnias + "," + moneyForEqual.kopecks);
+                return false;
+            }
         }
+        return false;
     }
 
-    public void showMoney() {
-        System.out.println(this.hryvnias + "," + this.kopecks);
+    @Override
+    public String toString() {
+        return hryvnias + "," + kopecks;
     }
 }
