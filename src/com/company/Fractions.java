@@ -1,6 +1,6 @@
 package com.company;
 
-public class Fractions {
+public class Fractions implements FractionsInt {
     private long numerator;
     private short denominator;
 
@@ -17,52 +17,55 @@ public class Fractions {
         long resNumerator = this.numerator * fractionForAdd.denominator +
                 fractionForAdd.numerator * this.denominator;
         short resDenominator = (short) (this.denominator * fractionForAdd.denominator);
-        Fractions result = new Fractions(resNumerator, resDenominator);
-        return result;
+        return new Fractions(resNumerator, resDenominator);
     }
 
     public Fractions subtraction(Fractions fractionForSum) {
         long resNumerator = this.numerator * fractionForSum.denominator -
                 fractionForSum.numerator * this.denominator;
         short resDenominator = (short) (this.denominator * fractionForSum.denominator);
-        Fractions result = new Fractions(resNumerator, resDenominator);
-        return result;
+        return new Fractions(resNumerator, resDenominator);
     }
 
     public Fractions division(Fractions fractionForDiv) {
         long resNumerator = this.numerator * fractionForDiv.denominator;
         short resDenominator = (short) (this.denominator * fractionForDiv.numerator);
-        Fractions result = new Fractions(resNumerator, resDenominator);
-        return result;
+        return new Fractions(resNumerator, resDenominator);
+
     }
 
     public Fractions multiplication(Fractions fractionForMultiplication) {
         long resNumerator = this.numerator * fractionForMultiplication.numerator;
         short resDenominator = (short) (this.denominator * fractionForMultiplication.denominator);
-        Fractions result = new Fractions(resNumerator, resDenominator);
-        return result;
+        return new Fractions(resNumerator, resDenominator);
     }
 
-    public boolean equal(Fractions fractionForEqual) {
-        float firstNumber = this.numerator / this.denominator;
-        float secondNumber = fractionForEqual.numerator / fractionForEqual.denominator;
+    @Override
+    public boolean equals(Object fraction) {
+        if (fraction instanceof Fractions) {
+            Fractions fractionForEqual = (Fractions) fraction;
+            float firstNumber = this.numerator / this.denominator;
+            float secondNumber = fractionForEqual.numerator / fractionForEqual.denominator;
 
-        if (firstNumber == secondNumber) {
-            System.out.println(this.numerator + "/" + this.denominator + " = " +
-                    fractionForEqual.numerator + "/" + fractionForEqual.denominator);
-            return true;
-        } else if (firstNumber > secondNumber) {
-            System.out.println(this.numerator + "/" + this.denominator + " > " +
-                    fractionForEqual.numerator + "/" + fractionForEqual.denominator);
-            return false;
-        } else {
-            System.out.println(this.numerator + "/" + this.denominator + " < " +
-                    fractionForEqual.numerator + "/" + fractionForEqual.denominator);
-            return false;
+            if (firstNumber == secondNumber) {
+                System.out.println(this.numerator + "/" + this.denominator + " = " +
+                        fractionForEqual.numerator + "/" + fractionForEqual.denominator);
+                return true;
+            } else if (firstNumber > secondNumber) {
+                System.out.println(this.numerator + "/" + this.denominator + " > " +
+                        fractionForEqual.numerator + "/" + fractionForEqual.denominator);
+                return false;
+            } else {
+                System.out.println(this.numerator + "/" + this.denominator + " < " +
+                        fractionForEqual.numerator + "/" + fractionForEqual.denominator);
+                return false;
+            }
         }
+        return false;
     }
 
-    public void showFraction() {
-        System.out.println(this.numerator + " / " + this.denominator);
+    @Override
+    public String toString() {
+        return numerator + "/" + denominator;
     }
 }
