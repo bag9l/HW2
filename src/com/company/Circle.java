@@ -6,9 +6,8 @@ public class Circle {
     public Circle(int radius) {
         if (radius < 0) {
             radius = 0;
-        } else {
-            this.radius = radius;
         }
+        this.radius = radius;
     }
 
     public int getRadius() {
@@ -18,9 +17,8 @@ public class Circle {
     public void setRadius(int radius) {
         if (radius < 0) {
             radius = 0;
-        } else {
-            this.radius = radius;
         }
+        this.radius = radius;
     }
 
     public float getArea() {
